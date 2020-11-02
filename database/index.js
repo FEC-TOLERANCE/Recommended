@@ -22,7 +22,9 @@ const imageSchema = new mongoose.Schema({
 
 const Image = mongoose.model('image', imageSchema);
 
-const saveImage = (images => {
+const saveImages = (images => {
+  const imagesSaved = [];
+
   for (let i = 0; i < images.length; i++) {
     const newImage = new Image({
       key: i + 1,
@@ -32,14 +34,18 @@ const saveImage = (images => {
       small: images[i].small,
       thumb: images[i].thumb
     })
-    newImage.save(err => {
-      throw new Error(err);
-    })
-  }
-});
 
-const saveImages = (images => {
-  return Promise.resolve(saveImage(images));
+    const saveImage = new Promise((resolve, reject) => {
+      newImage.save(err => {
+        if (err) {
+          reject(err);
+        }
+        resolve();
+      })
+    })
+    imagesSaved.push(saveImage);
+  }
+  return Promise.all(imagesSaved);
 })
 
 module.exports = {

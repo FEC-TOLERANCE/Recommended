@@ -3,7 +3,7 @@ const database = require ('./index.js');
 
 Promise.resolve(seedImages.allImages())
   .then(images => {
-    database.saveImages(images);
+    return Promise.resolve(database.saveImages(images));
   })
   .then(() => {
     process.exit();

@@ -27,7 +27,6 @@ const allImages = () => {
   }
   return Promise.all(getAllImages)
     .then(imageResults => {
-      // return imageResults;
       return parseImages(imageResults);
     })
     .catch(err => {
