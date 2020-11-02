@@ -13,6 +13,7 @@ db.once('open', function() {
 
 const imageSchema = new mongoose.Schema({
   key: Number,
+  recommended: Array,
   raw: String,
   full: String,
   regular: String,
@@ -28,6 +29,7 @@ const saveImages = (images => {
   for (let i = 0; i < images.length; i++) {
     const newImage = new Image({
       key: i + 1,
+      recommended: randomProjects(),
       raw: images[i].raw,
       full: images[i].full,
       regular: images[i].regular,
@@ -46,8 +48,34 @@ const saveImages = (images => {
     imagesSaved.push(saveImage);
   }
   return Promise.all(imagesSaved);
-})
+});
+
+const randomProjects = () => {
+  let randomNums = [];
+
+  while (randomNums.length < 4) {
+    let randomNum = Math.floor(Math.random() * 100);
+
+    if (randomNums.indexOf(randomNum) === -1) {
+      randomNums.push(randomNum);
+    }
+  }
+  return randomNums;
+};
+
+const getRelatedProjects = (projectId => {
+  return new Promise((resolve, reject) => {
+    Image.find({'key': projectId})
+      .then(imageData => {
+        resolve(imageData);
+      })
+      .catch(err => {
+        reject(err);
+      })
+  })
+});
 
 module.exports = {
-  saveImages
+  saveImages,
+  getRelatedProjects
 }
