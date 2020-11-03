@@ -2,56 +2,65 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Projects(props) {
-  const [percentFunded, setFundings] = useState([]);
-  const [authors, setAuthors] = useState([]);
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState('');
+  const [funding, setFunding] = useState(0);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [author, setAuthor] = useState('');
 
   useEffect(() => {
-    props.projectInformation.forEach(projectId => {
-      getProjectOwner(projectId);
-      getProjectDetails(projectId);
-      getProjectImage(projectId);
-    })
+    getProjectImage(props.projectInformation);
+    getProjectDetails(props.projectInformation);
+    getProjectAuthor(props.projectInformation);
   }, [props.projectInformation]);
-
-  const getProjectOwner = (id) => {
-    axios.get(`http://ec2-3-15-177-95.us-east-2.compute.amazonaws.com:3003/project-owner/${id}`)
-      .then(owner => {
-        let author = owner.data.name;
-        setAuthors(authors => [...authors, author]);
-      })
-      .catch(err => {
-        throw new Error(err);
-      });
-  }
-
-  const getProjectDetails = (id) => {
-    axios.get(`http://3.12.73.115:3004/funding/${id}`)
-    .then(projectData => {
-      let amountFunded = projectData.data.backing.amountFunded, fundingGoal = projectData.data.backing.fundingGoal;
-      let percentageFunded = amountFunded/fundingGoal;
-
-      setFundings(percentFunded => [...percentFunded, percentageFunded]);
-    })
-    .catch(err => {
-      throw new Error(err);
-    })
-  }
 
   const getProjectImage = (id) => {
     axios.get(`http://localhost:3001/recommended/${id}`)
       .then(image => {
         let url = image.data[0].small;
-        setImages(images => [...images, url]);
+        setImage(url);
       })
       .catch(err => {
         throw new Error(err);
       })
   }
 
-  return (
-    <div className='projectContainer'>
+  const getProjectDetails = (id) => {
+    axios.get(`http://100.26.210.6:3004/funding/${id}`)
+      .then(projectDetails => {
+        let currentFunding = (projectDetails.data.backing.amountFunded/projectDetails.data.backing.fundingGoal);
+        let title = projectDetails.data.backing.title;
+        let description = shortenDescription(projectDetails.data.backing.description);
 
+        setFunding(currentFunding);
+        setTitle(title);
+        setDescription(description);
+      })
+  }
+
+  const getProjectAuthor = (id) => {
+    axios.get(`http://ec2-3-15-177-95.us-east-2.compute.amazonaws.com:3003/project-owner/${id}`)
+      .then(authorDetails => {
+        let author = authorDetails.data.name;
+        setAuthor(author);
+      })
+  }
+
+  const shortenDescription = (description) => {
+    let max = 220, min = 180;
+    let randomNum = Math.floor(Math.random() * (max - min + 1) + min)
+
+    return description.slice(0, randomNum);
+  }
+
+  return (
+    <div className={`projectContainer${props.id}`}>
+      <img className='projectImage' src={image}></img>
+      <div>
+        <h4>{title}</h4>
+        <p>{description}</p>
+      </div>
+      <div>By {author}</div>
     </div>
   )
 }

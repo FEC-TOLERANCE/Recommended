@@ -19,11 +19,19 @@ function Recommended() {
 
   return (
     <div className='recommendedContainer'>
-      <div>
-        <h3>WE ALSO RECOMMEND</h3>
-        <h3>Discover more</h3>
+      <div className='smallHeaderSection'>
+        <h3 className='alsoRecommend'>WE ALSO RECOMMEND</h3>
+        <a className='discoverMore' href=''>Discover more</a>
       </div>
-      <Projects projectInformation={recommendations}/>
+      <div className='projectsContainer'>
+        {recommendations.map((recommendation, index) => {
+          return (
+            <div key={index} className='currentProject'>
+              <Projects projectInformation={recommendation} id={index+1}/>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
