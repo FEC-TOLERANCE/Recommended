@@ -28,7 +28,7 @@ function Projects(props) {
   const getProjectDetails = (id) => {
     axios.get(`http://100.26.210.6:3004/funding/${id}`)
       .then(projectDetails => {
-        let currentFunding = (projectDetails.data.backing.amountFunded/projectDetails.data.backing.fundingGoal);
+        let currentFunding = Math.floor((projectDetails.data.backing.amountFunded/projectDetails.data.backing.fundingGoal)*100);
         let title = projectDetails.data.backing.title;
         let description = shortenDescription(projectDetails.data.backing.description);
 
@@ -47,7 +47,7 @@ function Projects(props) {
   }
 
   const shortenDescription = (description) => {
-    let max = 220, min = 180;
+    const min = 120, max = 160;
     let randomNum = Math.floor(Math.random() * (max - min + 1) + min)
 
     return description.slice(0, randomNum);
@@ -56,6 +56,9 @@ function Projects(props) {
   return (
     <div className={`projectContainer${props.id}`}>
       <img className='projectImage' src={image}></img>
+      <div className='fundingWrapper'>
+      <div className='fundingPercentage' style={{width: funding < 101 ? `${funding}%` : '100%'}}></div>
+      </div>
       <div className='projectDetails'>
         <h4 className='projectTitle'>{title}</h4>
         <p className='projectDescription'>{description}</p>
