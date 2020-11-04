@@ -54,8 +54,8 @@ function Projects(props) {
   }
 
   const highlightText = (e) => {
-    console.log(e.target.children);
     e.currentTarget.style.textDecoration = 'underline';
+    e.currentTarget.style.cursor = 'pointer';
   }
 
   const normalText = (e) => {
