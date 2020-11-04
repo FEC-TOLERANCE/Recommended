@@ -23,7 +23,7 @@ function Projects(props) {
       .catch(err => {
         throw new Error(err);
       })
-  }
+  };
 
   const getProjectDetails = (id) => {
     axios.get(`http://100.26.210.6:3004/funding/${id}`)
@@ -36,7 +36,7 @@ function Projects(props) {
         setTitle(title);
         setDescription(description);
       })
-  }
+  };
 
   const getProjectAuthor = (id) => {
     axios.get(`http://ec2-3-15-177-95.us-east-2.compute.amazonaws.com:3003/project-owner/${id}`)
@@ -44,23 +44,23 @@ function Projects(props) {
         let author = authorDetails.data.name;
         setAuthor(author);
       })
-  }
+  };
 
   const shortenDescription = (description) => {
     const min = 120, max = 160;
     let randomNum = Math.floor(Math.random() * (max - min + 1) + min)
 
     return description.slice(0, randomNum);
-  }
+  };
 
   const highlightText = (e) => {
     e.currentTarget.style.textDecoration = 'underline';
     e.currentTarget.style.cursor = 'pointer';
-  }
+  };
 
   const normalText = (e) => {
     e.currentTarget.style.textDecoration = '';
-  }
+  };
 
   return (
     <div className={`projectContainer${props.id}`}>
@@ -77,6 +77,6 @@ function Projects(props) {
       </div>
     </div>
   )
-}
+};
 
 export default Projects;
