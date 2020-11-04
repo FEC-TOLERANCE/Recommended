@@ -56,11 +56,13 @@ function Projects(props) {
   return (
     <div className={`projectContainer${props.id}`}>
       <img className='projectImage' src={image}></img>
-      <div>
-        <h4>{title}</h4>
-        <p>{description}</p>
+      <div className='projectDetails'>
+        <h4 className='projectTitle'>{title}</h4>
+        <p className='projectDescription'>{description}</p>
       </div>
-      <div>By {author}</div>
+      <div className='projectAuthor'>By&nbsp;
+        <a className='authorDetails' href=''>{author}</a>
+      </div>
     </div>
   )
 }
