@@ -53,13 +53,22 @@ function Projects(props) {
     return description.slice(0, randomNum);
   }
 
+  const highlightText = (e) => {
+    console.log(e.target.children);
+    e.currentTarget.style.textDecoration = 'underline';
+  }
+
+  const normalText = (e) => {
+    e.currentTarget.style.textDecoration = '';
+  }
+
   return (
     <div className={`projectContainer${props.id}`}>
       <img className='projectImage' src={image}></img>
       <div className='fundingWrapper'>
-      <div className='fundingPercentage' style={{width: funding < 101 ? `${funding}%` : '100%'}}></div>
+      <div className='fundingPercentage' style={{width: funding < 100 ? `${funding}%` : '100%'}}></div>
       </div>
-      <div className='projectDetails'>
+      <div className='projectDetails' onMouseOver={e => highlightText(e)} onMouseOut={e => normalText(e)}>
         <h4 className='projectTitle'>{title}</h4>
         <p className='projectDescription'>{description}</p>
       </div>
