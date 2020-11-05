@@ -15,7 +15,7 @@ function Projects(props) {
   }, [props.projectInformation]);
 
   const getProjectImage = (id) => {
-    axios.get(`http://localhost:3001/recommended/${id}`)
+    axios.get(`http://ec2-54-67-1-177.us-west-1.compute.amazonaws.com:3001/recommended/${id}`)
       .then(image => {
         let url = image.data[0].small;
         setImage(url);

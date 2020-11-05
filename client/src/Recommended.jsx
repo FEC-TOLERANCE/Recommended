@@ -10,7 +10,7 @@ function Recommended() {
     let currentUrl = window.location.href.split('/');
     let projectId = currentUrl[3];
 
-    axios.get(`http://localhost:3001/recommended/${projectId}`)
+    axios.get(`http://ec2-54-67-1-177.us-west-1.compute.amazonaws.com:3001/recommended/${projectId}`)
       .then(project => {
         let recommendedIds = project.data[0].recommended;
         setRecommendations(recommendedIds);
