@@ -36,6 +36,9 @@ function Projects(props) {
         setTitle(title);
         setDescription(description);
       })
+      .catch(err => {
+        throw new Error(err);
+      })
   };
 
   const getProjectAuthor = (id) => {
@@ -43,6 +46,9 @@ function Projects(props) {
       .then(authorDetails => {
         let author = authorDetails.data.name;
         setAuthor(author);
+      })
+      .catch(err => {
+        throw new Error(err);
       })
   };
 

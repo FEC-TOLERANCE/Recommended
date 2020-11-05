@@ -15,6 +15,9 @@ function Recommended() {
         let recommendedIds = project.data[0].recommended;
         setRecommendations(recommendedIds);
       })
+      .catch(err => {
+        throw new Error(err);
+      })
   }, []);
 
   return (
