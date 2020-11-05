@@ -79,7 +79,7 @@ function Projects(props) {
         <p className='projectDescription'>{description}</p>
       </div>
       <div className='projectAuthor'>By&nbsp;
-        <a className='authorDetails' href=''>{author}</a>
+        <a className='author-fullName' href=''>{author}</a>
       </div>
     </div>
   )
