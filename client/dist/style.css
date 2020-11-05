@@ -56,10 +56,12 @@
 }
 .projectTitle {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .projectDetails {
   color: #282828;
+  margin-top: 1.5rem;
 }
 
 .projectDescription {
@@ -69,7 +71,7 @@
 
 .projectAuthor {
   color: #656969;
-  font-size: 0.8rem;
+  font-size: 14px;
 }
 
 .authorDetails {
