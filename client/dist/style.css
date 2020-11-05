@@ -1,0 +1,76 @@
+.recommendedContainer {
+  padding-right: 60px;
+  padding-left: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1300px;
+  display: grid;
+}
+
+.smallHeaderSection {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.alsoRecommend {
+  float: left;
+  color: #656969;
+  font-size: 0.85rem;
+}
+
+.discoverMore {
+  float: left;
+  text-decoration: none;
+  padding-left: 1.0rem;
+  font-size: 0.85rem;
+  color: #5555FF;
+}
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  width: 100%;
+}
+
+.currentProject {
+  width: auto;
+  margin-right: 2rem;
+}
+
+.projectImage {
+  width: 100%;
+  height: 150px;
+  display: block;
+  cursor: pointer;
+}
+
+.fundingPercentage {
+  background-color: #037362;
+  height: 0.3rem;
+}
+.projectTitle {
+  font-size: 1.5rem;
+}
+
+.projectDetails {
+  color: #282828;
+}
+
+.projectDescription {
+  color: #282828;
+  padding-bottom: 1rem;
+}
+
+.projectAuthor {
+  color: #656969;
+  font-size: 0.8rem;
+}
+
+.authorDetails {
+  color: #656969;
+}
+
+.fundingWrapper {
+  background-color: #E8E8E8;
+}

@@ -22,4 +22,5 @@ https://github.com/FEC-TOLERANCE/Recommended
 
 From within the root directory:
 
-npm install (for all dependeices)
+npm install (for all dependencies)
+npm run seed to seed the database with data (ensure mongo is installed)
