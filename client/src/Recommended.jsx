@@ -21,6 +21,7 @@ function Recommended() {
   }, []);
 
   return (
+    <div className='totalContainer'>
     <div className='recommendedContainer'>
       <div className='smallHeaderSection'>
         <h3 className='alsoRecommend'>WE ALSO RECOMMEND</h3>
@@ -35,6 +36,7 @@ function Recommended() {
           )
         })}
       </div>
+    </div>
     </div>
   )
 }
