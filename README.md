@@ -1,26 +1,41 @@
-# Project Name
+<img src='https://cdn.techinasia.com/wp-content/uploads/2015/06/kickstarter-logo.jpg'>
 
-> Recommended Component for KickStarter
+Table of Contents
+-----------------
+- [Description](#Description)
+- [Getting Started](#Getting-Started)
+  * [Dependencies](#Dependencies)
+  * [Set up](#Set-up)
+- [Database Schema](#Database-Schema)
+- [Application Demo](#Application-Demo)
 
-## Related Projects
+Description
+-----------
+This is a clone application designed to mimic the recommended component of Kickstarter! This application was designed with React Hooks, Express, and MongoDB.
 
-https://github.com/FEC-TOLERANCE/Recommended
+Getting Started
+---------------
 
-## Table of Contents
+### Dependencies
+- Node >= v6.13.0
+- Mongo v4.4.0
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+### Set up
+1. If you do not have MongoDB installed, follow the instructions [here](https://docs.mongodb.com/manual/installation/).
+2. Go to https://unsplash.com/developers and register as a developer.
+3. Generate a `config.js` in the root directory. Export out an object like so `{ "token": API_KEY}` where `API_KEY` is the access key.
+4. Run `npn run seed` to seed the database with random image links.
+5. Run `npm run react` to compile all public files into a bundle.
+6. Run `npm run server` to serve up the files at port 3001.
 
-## Usage
+Database Schema
+---------------
+<img src='https://i.imgur.com/XWZcEMS.png' width=300 height=150>
 
-## Requirements
+Application Demo
+----------------
+### Application recommended component
+<img src='https://i.imgur.com/mgmfnfS.png'>
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-npm install (for all dependencies)
-npm run seed to seed the database with data (ensure mongo is installed)
+### Kickstarter recommended component
+<img src='https://i.imgur.com/hbbn4Sp.png'>
